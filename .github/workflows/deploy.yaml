@@ -22,8 +22,12 @@ jobs:
       - name: Tag image
         run:
           docker tag upload-ai/pages registry.digitalocean.com/eureka-ai-app:latest
-      - name: Push image to DO Container Registry
-        run: docker push registry.digitalocean.com/eureka-ai-app
+      - name: List docker images
+        run: docker image ls
+      - name: Push Docker Image and Capture Errors
+        run: |
+          docker push registry.digitalocean.com/eureka-ai-app:latest 2> docker_push_errors.log || true
+          cat docker_push_errors.log
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
