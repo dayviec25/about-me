@@ -20,13 +20,11 @@ jobs:
       - name: Log in to DO Container Registry 
         run: doctl registry login --expiry-seconds 3600
       - name: Tag image
-        run:
-          docker tag upload-ai registry.digitalocean.com/eureka-ai-app/upload-ai:latest
-      - name: List docker images
-        run: docker image ls
+        run: docker tag upload-ai registry.digitalocean.com/eureka-ai-app/upload-ai:latest
       - name: Push Docker Image and Capture Errors
-        run: |
-          docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+        run: docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+      - name: Clean up old images in the registry
+        run: doctl registry repository delete-manifest eureka-ai-app upload-ai --keep 1 --force
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
