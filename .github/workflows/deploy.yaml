@@ -33,6 +33,7 @@ jobs:
           host: ${{ secrets.DROPLET_IP }}
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             docker pull registry.digitalocean.com/eureka-ai-app/upload-ai:latest
             docker stop eureka-ai-app || true
