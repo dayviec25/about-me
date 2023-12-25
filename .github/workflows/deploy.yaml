@@ -11,29 +11,20 @@ jobs:
     steps:
       - name: Checkout the repo 
         uses: actions/checkout@v2
-      
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: registry.digitalocean.com/eureka-ai-app:latest
-
+      - name: Build Image
+        run: docker build -t upload-ai/pages .
       - name: Install doctl 
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
       - name: Log in to DO Container Registry 
         run: doctl registry login --expiry-seconds 600
-
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: registry.digitalocean.com/eureka-ai-app:latest
-      
+      - name: Tag image
+        run:
+          docker tag upload-ai/pages \
+          registry.digitalocean.com/eureka-ai-app:latest
+      - name: Push image to DO Container Registry
+        run: docker push registry.digitalocean.com/eureka-ai-app:latest
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
