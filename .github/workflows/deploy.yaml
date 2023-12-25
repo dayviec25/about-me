@@ -12,7 +12,7 @@ jobs:
       - name: Checkout the repo 
         uses: actions/checkout@v2
       - name: Build Image
-        run: docker build -t upload-ai/pages .
+        run: docker build -t upload-ai .
       - name: Install doctl 
         uses: digitalocean/action-doctl@v2
         with:
@@ -21,12 +21,12 @@ jobs:
         run: doctl registry login --expiry-seconds 3600
       - name: Tag image
         run:
-          docker tag upload-ai/pages registry.digitalocean.com/eureka-ai-app:latest
+          docker tag upload-ai registry.digitalocean.com/eureka-ai-app/upload-ai:latest
       - name: List docker images
         run: docker image ls
       - name: Push Docker Image and Capture Errors
         run: |
-          docker push registry.digitalocean.com/eureka-ai-app:latest 2> docker_push_errors.log || true
+          docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest 2> docker_push_errors.log || true
           cat docker_push_errors.log
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
