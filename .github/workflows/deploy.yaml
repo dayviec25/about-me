@@ -27,6 +27,13 @@ jobs:
       - name: Log in to DO Container Registry 
         run: doctl registry login --expiry-seconds 600
 
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: registry.digitalocean.com/eureka-ai-app:latest
+      
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
