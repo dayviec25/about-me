@@ -26,16 +26,15 @@ jobs:
         run: docker image ls
       - name: Push Docker Image and Capture Errors
         run: |
-          docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest 2> docker_push_errors.log || true
-          cat docker_push_errors.log
+          docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DROPLET_IP }}
           username: ${{ secrets.DROPLET_USER }}
-          password: ${{ secrets.DROPLET_PASSWORD }}
+          ssh: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull registry.digitalocean.com/eureka-ai-app:latest
-            docker stop my-app || true
-            docker rm my-app || true
-            docker run -d --name my-app -p 8080:8080 registry.digitalocean.com/eureka-ai-app:latest
+            docker pull registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+            docker stop eureka-ai-app || true
+            docker rm eureka-ai-app || true
+            docker run -d --name eureka-ai-app -p 8080:8080 registry.digitalocean.com/eureka-ai-app/upload-ai:latest
