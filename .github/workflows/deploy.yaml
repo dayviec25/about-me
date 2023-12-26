@@ -24,7 +24,14 @@ jobs:
       - name: Push Docker Image and Capture Errors
         run: docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest
       - name: Clean up old images in the registry
-        run: doctl registry repository delete-manifest eureka-ai-app upload-ai --keep 1 --force
+        run: |
+          #!/bin/bash
+          REPOSITORY="eureka-ai-app"
+          untagged_manfests=$(doctl registry repository list-manifests $REPOSITORY --format "Digest,Tag" --no-header | awk '$2 == "" {print $1}')
+          for manifest in $untagged_manifests; do
+            echo "Deleting untagged manifest: $manifest"
+            doctl registry repository delete-manifest $REPOSITORY $manifest --force
+          done
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@master
         with:
