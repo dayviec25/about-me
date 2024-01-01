@@ -1,4 +1,4 @@
-module upload-ai
+module about-me
 
 go 1.21.5
 

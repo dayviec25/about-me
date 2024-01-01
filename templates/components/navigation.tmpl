@@ -1,0 +1,32 @@
+{{ define "navigation" }}
+<nav class="fixed bg-stone-950n border-2 rounded-lg border-stone-700 text-white w-64 overflow-hidden">
+    <!-- Profile and title -->
+    <div class="p-6">
+      <div class="flex items-center space-x-4">
+        <div class="rounded-full">
+          <!-- Replace with your image path -->
+          <img class="h-auto w-16 rounded-full" src="https://pbs.twimg.com/profile_images/1713322706609827840/r7lsuZUg_400x400.jpg" alt="Profile image">
+        </div>
+        <div>
+          <h1 class="text-xl font-bold">David Chung</h1>
+          <p class="text-gray-400">Engineering Innovator</p>
+        </div>
+    </div>
+    
+    <nav class="flex flex-col space-y-2 px-6 py-4">
+      <a href="#about" class="text-gray-300 hover:text-white">About</a>
+      <a href="#projects" class="text-gray-300 hover:text-white">Production</a>
+      <a href="#experience" class="text-gray-300 hover:text-white">Experience</a>
+      <a href="#blog" class="text-gray-300 hover:text-white">Blog</a>
+      <a href="#reviews" class="text-gray-300 hover:text-white">Reviews</a>
+      <a href="#contacts" class="text-gray-300 hover:text-white">Contacts</a>
+      <a href="https://cv.dchung.dev" class="text-gray-300 hover:text-white">Minimalist CV</a>
+    </nav>
+
+    <div class="mt-4 w-full">
+        <a href="#contact" class="block w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition ease-in duration-200 text-center">
+            Book a call
+        </a>
+    </div>
+</nav>
+{{ end }}

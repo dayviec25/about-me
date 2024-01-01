@@ -1,0 +1,21 @@
+.carousel-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.carousel {
+    display: inline-block;
+    animation: scroll 10s linear infinite;
+}
+
+.carousel-item {
+    display: inline-block;
+    width: 200px; /* Adjust as needed */
+    margin-right: 20px; /* Space between items */
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}

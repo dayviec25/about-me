@@ -1,0 +1,33 @@
+<!-- templates/pages/index.tmpl -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Component</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../dist/carousel.css">
+<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+</head>
+<body class="bg-stone-900 text-white font-sans">
+
+  <!-- Flex Container -->
+  <div class="flex justify-center">
+
+    <!-- Navigation Column -->
+    <div class="hidden md:block md:w-64 border-gray-800 overflow-y-auto mt-10">
+      {{ template "navigation" }}
+    </div>
+
+    <!-- Content Column -->
+    <div class="w-full md:max-w-2xl mx-8 my-10 flex-1 overflow-y-auto space-y-4">
+      {{ template "about" . }}
+      {{ template "projects" .}}
+      {{ template "workExperience" .}}
+      {{ template "reviews" . }}
+      {{ template "contact" .Contact }}
+    </div>
+
+  </div>
+</body>
+</html>

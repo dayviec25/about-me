@@ -1,0 +1,17 @@
+{{ define "workExperience" }}
+<div class="border-2 p-8 rounded-lg border-stone-700 bg-stone-950">
+  <section>
+    <div class="text-2xl mb-4 font-bold text-white">Experience</div>
+    {{ range .WorkExperience }}
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="text-sm text-gray-300">{{ .Date }}</div>
+      <div>
+        <div class="text-lg text-white font-bold">{{ .Company }}</div>
+        <div class="text-md text-gray-300">{{ .Role }}</div>
+        <div class="text-xs text-gray-400">{{ .Description }}</div>
+      </div>
+    </div>
+    {{ end }}
+  </section>
+</div>
+{{ end }}

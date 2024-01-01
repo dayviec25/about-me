@@ -1,0 +1,9 @@
+<blockquote class="text-xl italic mb-4">
+    "{{ .Review.Quote }}"
+</blockquote>
+<cite class="block text-lg font-semibold">{{ .Review.Author }} - {{ .Review.Company }}</cite>
+
+<div class="flex justify-end space-x-2 mt-2">
+    <button hx-get="/review/{{ .PrevID }}/prev" hx-target="#review-container" hx-swap="innerHTML" class="p-3 bg-gray-800 rounded border border-gray-600 hover:bg-gray-600 {{ if .IsFirstReview}}invisible{{end}}">&lt;</button>
+    <button hx-get="/review/{{ .NextID }}/next" hx-target="#review-container" hx-swap="innerHTML" class="p-3 bg-gray-800 border border-gray-600 rounded hover:bg-gray-600 {{ if .IsLastReview }}invisible{{end}}">&gt;</button>
+</div>
