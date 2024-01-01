@@ -73,7 +73,7 @@ func getPageData(page string) interface{} {
 		}
 		return pageData
 	}
-	return nil // Or some default data for other pages
+	return nil
 }
 
 func customHTTPErrorHandler(err error, c echo.Context) {

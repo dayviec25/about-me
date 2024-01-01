@@ -26,8 +26,8 @@ RUN npm install -g tailwindcss
 # Copy the pre-built binary file from the previous stage
 COPY --from=builder /app/main .
 
-# Copy the templates directory from the build stage to the final image
-COPY --from=builder /app/templates /app/templates
+# Copy the templates directory
+COPY --from=builder /app/templates ./templates
 
 # Set the command to run the binary
 CMD ["./main"]
