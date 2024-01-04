@@ -1,5 +1,5 @@
 {{ define "reviews" }}
-<div class="bg-black text-white p-6 rounded-lg">
+<div id="review" class="bg-black text-white p-6 rounded-lg">
     <div class="mb-4 uppercase tracking-wide font-semibold">Reviews</div>
     <div id="review-container" hx-get="/review/initial" hx-trigger="load" hx-swap="innerHTML" hx-target="this"> 
     </div>
