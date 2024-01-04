@@ -51,6 +51,14 @@ func main() {
 	e.Debug = true
 	e.Renderer = &TemplateRegistry{templates: templates}
 	handlers.RegisterReviewHandlers(e)
+	e.GET("/", func(c echo.Context) error {
+		pageData, err := data.GetAboutMeData()
+		if err != nil {
+			log.Printf("Error getting project data: %v", err)
+			return nil
+		}
+		return c.Render(http.StatusOK, "index.tmpl", pageData)
+	})
 	e.GET("/:page", func(c echo.Context) error {
 		page := c.Param("page")
 		data := getPageData(page)
