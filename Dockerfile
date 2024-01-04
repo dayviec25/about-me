@@ -29,6 +29,7 @@ COPY --from=builder /app/main .
 # Copy the templates directory
 COPY --from=builder /app/templates ./templates
 
+COPY --from=builder /app/dist ./dist
 # Set the command to run the binary
 CMD ["./main"]
 
