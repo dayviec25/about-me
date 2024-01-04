@@ -76,7 +76,7 @@ func main() {
 	}()
 
 	// Start HTTPS server
-	e.Logger.Fatal(e.StartTLS(":443", "/etc/letsencrypt/live/dchung.dev/cert.pem", "/etc/letsencrypt/live/dchung.dev/privatekey.pem"))
+	e.Logger.Fatal(e.StartTLS(":443", "/etc/letsencrypt/live/dchung.dev/fullchain.pem", "/etc/letsencrypt/live/dchung.dev/privkey.pem"))
 }
 
 func getPageData(page string) interface{} {
