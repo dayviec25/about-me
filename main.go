@@ -68,7 +68,6 @@ func main() {
 	// Custom error handler
 	e.HTTPErrorHandler = customHTTPErrorHandler
 
-	// Start HTTP server
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))
 }
