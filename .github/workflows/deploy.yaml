@@ -9,20 +9,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repo 
+      - name: Checkout the repo
         uses: actions/checkout@v2
       - name: Build Image
-        run: docker build -t upload-ai .
-      - name: Install doctl 
+        run: docker build -t about-me .
+      - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Log in to DO Container Registry 
+      - name: Log in to DO Container Registry
         run: doctl registry login --expiry-seconds 3600
       - name: Tag image
-        run: docker tag upload-ai registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+        run: docker tag about-me registry.digitalocean.com/eureka-ai-app/about-me:latest
       - name: Push Docker Image and Capture Errors
-        run: docker push registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+        run: docker push registry.digitalocean.com/eureka-ai-app/about-me:latest
       - name: Clean up old images in the registry
         run: |
           #!/bin/bash
@@ -40,7 +40,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            docker pull registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+            docker pull registry.digitalocean.com/eureka-ai-app/about-me:latest
             docker stop eureka-ai-app || true
             docker rm eureka-ai-app || true
-            docker run -d --name eureka-ai-app -p 8080:8080 registry.digitalocean.com/eureka-ai-app/upload-ai:latest
+            docker run -d --name eureka-ai-app -p 8080:8080 registry.digitalocean.com/eureka-ai-app/about-me:latest
