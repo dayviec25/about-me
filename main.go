@@ -69,14 +69,8 @@ func main() {
 	e.HTTPErrorHandler = customHTTPErrorHandler
 
 	// Start HTTP server
-	go func() {
-		if err := e.Start(":80"); err != nil && err != http.ErrServerClosed {
-			e.Logger.Fatal("shutting down the HTTP server")
-		}
-	}()
-
-	// Start HTTPS server
-	e.Logger.Fatal(e.StartTLS(":443", "/etc/letsencrypt/live/dchung.dev/fullchain.pem", "/etc/letsencrypt/live/dchung.dev/privkey.pem"))
+	// Start server
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func getPageData(page string) interface{} {
