@@ -5,7 +5,8 @@
     <div class="carousel">
       {{ range .Projects }}
       <div class="carousel-item w-auto">
-        <div class="bg-white rounded-lg flex" href="{{ .Link.Href }}">
+      <a href="{{ .Link.Href }}">
+        <div class="bg-white rounded-lg flex">
           <div class="flex flex-row justify-between p-4 items-center">
             <img class="w-32 h-32 rounded-md mr-4" src="{{ .Logo }}" alt="{{ .LogoAlt }}">
             <div class="flex flex-col">
@@ -27,6 +28,7 @@
             </div>
           </div>
         </div>
+        </a>
       </div>
       {{ else }}
       <div>No Projects Available</div>
