@@ -30,7 +30,13 @@ func GetAboutMeData() (model.AboutMe, error) {
 	}
 	WorkExperience := []model.WorkExperience{
 		{
-			Date:        "2021 - Present",
+			Date:        "2024 - Present",
+			Company:     "Lyft",
+			Role:        "Senior Software Engineer (Android)",
+			Description: "Launched Driver AI in the driver app: a voice-first assistant for navigation and in-trip tasks so drivers stay hands-free and focused on the road, with snappier interactions, a smoother earning experience, and fewer interruptions that pull drivers out of the driving flow. Shipped an internal AI tool (LangGraph) so mobile engineers self-serve review-ready microservices and backends, tightening review cycles and how quickly the team ships. Rebuilt the rider and driver map experience on an in-house static engine that preserved visual parity with the prior maps experience while reducing third-party maps API spend.",
+		},
+		{
+			Date:        "2021 - 2024",
 			Company:     "Verdict MMA",
 			Role:        "Full Stack Mobile Engineer",
 			Description: "Founder of Verdict MMA, a groundbreaking MMA social platform with an integrated sports betting feature. Successfully led the company from its seed funding stage, overseeing the development of a robust tech stack and the introduction of innovative features. Pioneered process enhancements to streamline code deployment, significantly improving developer efficiency and product quality",
@@ -55,6 +61,26 @@ func GetAboutMeData() (model.AboutMe, error) {
 		},
 	}
 	Projects := []model.Project{
+		{
+			Title:        "Lyft - Rider",
+			Logo:         "https://play-lh.googleusercontent.com/9S5meuYdg2nVNA0jAN3cV_W4AQ3r8wV2PtL_--AgY3znqIC7MQGH5niI4wKLF76ebB4=w240-h480",
+			LogoAlt:      "Lyft Rider Logo",
+			ReviewRating: "",
+			ReviewCount:  "",
+			Downloads:    "100M+",
+			CompanyName:  "Lyft",
+			Link:         model.Link{Href: "https://play.google.com/store/apps/details?id=me.lyft.android", Label: "Visit Lyft - Rider"},
+		},
+		{
+			Title:        "Lyft - Driver",
+			Logo:         "https://play-lh.googleusercontent.com/ji4DDsdijIj4VwbIem6d3AG7Ryu9ovPyGYZ7W1RkuuLl2fJEjO_3K4ukBMrsq8XvMDc=w240-h480",
+			LogoAlt:      "Lyft Driver Logo",
+			ReviewRating: "4.8",
+			ReviewCount:  "217k",
+			Downloads:    "10M+",
+			CompanyName:  "Lyft",
+			Link:         model.Link{Href: "https://play.google.com/store/apps/details?id=com.lyft.android.driver", Label: "Visit Lyft - Driver"},
+		},
 		{
 			Title:        "Verdict MMA Picks & Scoring",
 			Logo:         "https://play-lh.googleusercontent.com/w7s5HrUc0JgcR_vYRtd-PlrnVJ565hDhkK2V8hVcOf2dWWaPm5rCVCVrQOo_LsI1-eY=w240-h480-rw",
