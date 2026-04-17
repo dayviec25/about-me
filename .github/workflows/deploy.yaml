@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Deploy to Fly.io
 
 on:
   push:
@@ -9,38 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build -t about-me .
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Log in to DO Container Registry
-        run: doctl registry login --expiry-seconds 3600
-      - name: Tag image
-        run: docker tag about-me registry.digitalocean.com/eureka-ai-app/about-me:latest
-      - name: Push Docker Image and Capture Errors
-        run: docker push registry.digitalocean.com/eureka-ai-app/about-me:latest
-      - name: Clean up old images in the registry
-        run: |
-          #!/bin/bash
-          REPOSITORY="eureka-ai-app"
-          untagged_manfests=$(doctl registry repository list-manifests $REPOSITORY --format "Digest,Tag" --no-header | awk '$2 == "" {print $1}')
-          for manifest in $untagged_manifests; do
-            echo "Deleting untagged manifest: $manifest"
-            doctl registry repository delete-manifest $REPOSITORY $manifest --force
-          done
-      - name: Deploy to DigitalOcean Droplet
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          script: |
-            docker pull registry.digitalocean.com/eureka-ai-app/about-me:latest
-            docker stop eureka-ai-app || true
-            docker rm eureka-ai-app || true
-            docker run -d --name eureka-ai-app -p 8080:8080 registry.digitalocean.com/eureka-ai-app/about-me:latest
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
