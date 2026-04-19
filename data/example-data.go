@@ -59,6 +59,12 @@ func GetAboutMeData() (model.AboutMe, error) {
 			Role:        "Backend Engineer",
 			Description: "As a Backend Engineer at Yellow Pages, I played a key role in developing and maintaining the API for the Yellow Pages mobile app. I engineered a secure, RESTful API using .NET, specifically designed to handle spatial data for real estate listings. My responsibilities also included deploying an ETL solution to seamlessly integrate over 200,000 resale and rental listings daily, as well as automating services for email templating and daily statistical reporting.",
 		},
+		{
+			Date:        "2026",
+			Company:     "Resume AI",
+			Role:        "",
+			Description: "An AI that rewrites your resume for every role, runs mock interviews, and tells you — straight — what's working.",
+		},
 	}
 	Projects := []model.Project{
 		{
