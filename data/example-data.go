@@ -15,9 +15,9 @@ func GetAboutMeData() (model.AboutMe, error) {
 			Quote:   "David's tenure at Yellow Pages was marked by his remarkable skill in API development and data integration. His ability to architect robust backend solutions played a crucial role in our project's success. David's blend of technical proficiency and collaborative spirit makes him an invaluable asset.",
 		},
 		{
-			Author:  "Sanjay Thakur",
-			Company: "Verdict MMA",
-			Quote:   "David's role at Verdict MMA was transformative. As a founder, he not only demonstrated outstanding technical leadership but also showed a keen understanding of the MMA market. His strategic vision and drive for innovation were pivotal in scaling our platform.",
+			Author:  "Erik Kamp",
+			Company: "Senior Staff Software Engineer, Lyft",
+			Quote:   "Working alongside David on the Lyft Android team has been a real privilege. He brings deep expertise in Kotlin and modern Android architecture, and consistently ships rider and driver features that are both polished and performant. David has been instrumental in driving our AI initiatives forward, from the in-app Co-Pilot experience to Driver AI, helping us turn cutting-edge ideas into production features. Beyond the code, he raises the bar for the whole team with his thoughtful reviews and collaborative approach.",
 		},
 		{
 			Author:  "Sucheta Goregta",

@@ -51,6 +51,7 @@ func main() {
 	e.Debug = true
 	e.Renderer = &TemplateRegistry{templates: templates}
 	handlers.RegisterReviewHandlers(e)
+	handlers.RegisterBlogHandlers(e)
 	e.GET("/", func(c echo.Context) error {
 		pageData, err := data.GetAboutMeData()
 		if err != nil {
