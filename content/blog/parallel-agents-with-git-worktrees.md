@@ -40,33 +40,33 @@ git worktree remove ../myproject2
 
 None of these is hard on its own. But stack them across a dozen worktrees and you've built yourself a second job: a bookkeeping tax that grows with exactly the parallelism you were trying to gain.
 
-## Treehouse: worktrees without the bookkeeping
+## wt-pool: worktrees without the bookkeeping
 
-My fix is a tool called **treehouse** ([on GitHub](https://github.com/dayviec25/treehouse)), and it's refreshingly simple. Instead of manually adding, naming, tracking, and removing worktrees, you let treehouse manage the pool for you.
+My fix is a tool called **wt-pool** ([on GitHub](https://github.com/dayviec25/wt-pool)), and it's refreshingly simple. Instead of manually adding, naming, tracking, and removing worktrees, you let wt-pool manage the pool for you.
 
 ```bash
-treehouse          # drop into a fresh worktree
-treehouse          # run it again → another fresh worktree
-treehouse status   # list worktrees, in-use vs idle
+wt-pool          # open a subshell in a fresh worktree (reuses idle ones)
+wt-pool          # again, from another tab → another worktree
+wt-pool status   # list worktrees, in-use vs idle
 ```
 
-The magic is in the lifecycle. When you're done with a worktree, you just **close the tab** — and treehouse notices, frees it, and **reuses idle worktrees** the next time you ask for one instead of endlessly creating new directories.
+The magic is in the lifecycle. Each `wt-pool` drops you into a subshell inside the worktree; when you're done you just **exit the subshell — close the tab** — and wt-pool frees it, then **reuses idle worktrees** the next time you ask for one instead of endlessly creating new directories.
 
-So the four chores from above mostly evaporate. You don't name them, you don't track them by hand, `treehouse status` tells you what's live, and cleanup is "close the tab."
+So the four chores from above mostly evaporate. You don't name them, you don't track them by hand, `wt-pool status` tells you what's live, and cleanup is "close the tab."
 
 ## Scaling up with tmux
 
-Worktrees solve the *conflict* problem; they don't solve the *switching* problem. For that, pair treehouse with **tmux**.
+Worktrees solve the *conflict* problem; they don't solve the *switching* problem. For that, pair wt-pool with **tmux**.
 
 tmux lets you run each agent session in its own tab (a "window" in tmux terms), and with a **status bar** at the top you can see at a glance which sessions need your attention. Keyboard shortcuts jump you between them — no reaching for the mouse, no losing your place.
 
 The combination is what makes many parallel sessions actually manageable:
 
-- **treehouse** keeps the agents from colliding on disk.
+- **wt-pool** keeps the agents from colliding on disk.
 - **tmux tabs + status bar** keep *you* from getting lost across all of them.
 
 ## The payoff
 
 The whole point of running agents in parallel is leverage — more work happening at once than you could ever do serially. But that leverage evaporates if managing the worktrees costs you as much attention as the work itself.
 
-treehouse gives you the parallelism and quietly absorbs the bookkeeping. Spin up another session whenever you want one, close the tab when you're done, and let the tool remember the rest.
+wt-pool gives you the parallelism and quietly absorbs the bookkeeping. Spin up another session whenever you want one, close the tab when you're done, and let the tool remember the rest.

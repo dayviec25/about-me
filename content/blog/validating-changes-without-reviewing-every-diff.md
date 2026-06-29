@@ -13,9 +13,9 @@ If your rule is that every change gets your eyes on the diff before it merges, t
 
 So there's a mindset shift to make here: stop acting like the senior engineer who reviews every PR, and start acting like an **engineering manager or director.** Directors mostly don't read PRs. They shape their team's quality through good process and culture, and trust the team to carry it out. That's exactly the relationship you want with a crew of agents — quality enforced by a pipeline, not by you reading every line.
 
-## The pipeline: no-mistakes
+## The pipeline: guardrail
 
-I built a pipeline for this called **no-mistakes** — [github.com/dayviec25/no-mistakes](https://github.com/dayviec25/no-mistakes), free and open source, and runnable as a skill (just say "no mistakes" and it runs).
+I built a pipeline for this called **guardrail** — [github.com/dayviec25/guardrail](https://github.com/dayviec25/guardrail), free and open source, and runnable as a skill (just say "guardrail" and it runs).
 
 When the agent says a change is done, you don't open your editor. You hand the change to the pipeline, and it walks it from rough first-pass code all the way to a clean, merged PR. In order:
 

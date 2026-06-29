@@ -15,9 +15,9 @@ That depends on giving it bigger, more complex objectives. And the most extreme 
 
 I built a tool for exactly this, and it's free and open source.
 
-## Enter "good night, have fun"
+## Enter agent-loop
 
-The tool is literally called **gnhf** — "good night, have fun" — and it's built for long-running tasks. It's [on GitHub](https://github.com/dayviec25/gnhf), and the usage is about as simple as it gets: you give it an objective, and it keeps going in a loop until it hits a **stop condition you defined**.
+The tool is called **agent-loop**, and it's built for long-running tasks. It's [on GitHub](https://github.com/dayviec25/agent-loop), and the usage is about as simple as it gets: you give it an objective, and it keeps going in a loop until it hits a **stop condition you defined**.
 
 That's the whole idea. You're not babysitting a single prompt. You're handing over a goal and letting the agent iterate against it autonomously, overnight, while you're unconscious.
 
@@ -29,7 +29,7 @@ Set that loose at midnight and it'll churn through usability issues one at a tim
 
 ## What you can actually watch
 
-While it runs, gnhf gives you a live view so you're not flying blind:
+While it runs, agent-loop gives you a live view so you're not flying blind:
 
 - **Token usage** — how much you've burned so far.
 - **Iterations** — shown as a row of **moons**, one per loop.
@@ -39,7 +39,7 @@ Or you ignore all of it and go to bed, secure in the knowledge that the loop won
 
 ## What it's good at — and what it isn't
 
-This is the honest part. A loop running unsupervised for eight hours is only as useful as the objective is **checkable**. gnhf shines on two kinds of goals:
+This is the honest part. A loop running unsupervised for eight hours is only as useful as the objective is **checkable**. agent-loop shines on two kinds of goals:
 
 **Verifiable objectives** — where success is measurable:
 
@@ -57,13 +57,13 @@ What you should *not* do is point an unsupervised overnight loop at something va
 
 Fair question. The newer **`/go` command** in Codex and Claude Code does something similar — kick off a goal and let the agent run.
 
-The difference is control. gnhf lets you set:
+The difference is control. agent-loop lets you set:
 
 - a **token cap**
 - an **iteration cap**
 - a **precise stop condition**
 
-That matters more than it sounds. If you fire off an open-ended goal in Codex or Claude Code before bed, there's a real chance you wake up to discover your **entire weekly quota is gone**. The caps in gnhf are exactly what keep an overnight run from quietly emptying your budget while you sleep.
+That matters more than it sounds. If you fire off an open-ended goal in Codex or Claude Code before bed, there's a real chance you wake up to discover your **entire weekly quota is gone**. The hard caps in agent-loop are exactly what keep an overnight run from quietly emptying your budget while you sleep.
 
 ## The payoff
 

@@ -28,13 +28,13 @@ That changes the planning conversation completely:
 
 The whole thing turns planning from "read my essay and reply with an essay" into "look at this, mark it up, decide." It's just a far more honest way to evaluate something that's ultimately visual.
 
-## The tool: lavish
+## The tool: planboard
 
-I built a tool for this called **lavish** — [github.com/dayviec25/lavish-axi](https://github.com/dayviec25/lavish-axi), free and open source. (The name is a play on being "richer than a rich editor.")
+I built a tool for this called **planboard** — [github.com/dayviec25/planboard](https://github.com/dayviec25/planboard), free and open source. The name is literal: it's a board for laying out options and deciding on a plan.
 
-The part that makes it stick is that you install it **as a skill**. Skills load lazily — the agent only reads the description up front, and only pulls in the full instructions when it decides it needs them. So once lavish is installed, the agent automatically reaches for it on planning-type questions, without you having to remember to ask. You just say "come up with some options and let's discuss," and it launches the editor on its own.
+The part that makes it stick is that you install it **as a skill**. Skills load lazily — the agent only reads the description up front, and only pulls in the full instructions when it decides it needs them. So once planboard is installed, the agent automatically reaches for it on planning-type questions, without you having to remember to ask. You just say "come up with some options and let's discuss," and it launches the editor on its own.
 
-It's consistent enough that you have to go out of your way to *not* use it. Saying "don't use lavish" becomes the special case.
+It's consistent enough that you have to go out of your way to *not* use it. Saying "don't use planboard" becomes the special case.
 
 ## Why this pays off later
 

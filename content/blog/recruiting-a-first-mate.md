@@ -17,30 +17,30 @@ The fix is the one that finally made the whole thing click for me: you don't nee
 
 The idea is simple. Instead of talking to every individual agent yourself, you talk to **one** thing — a first mate — and *it* manages the crew for you. You stay the captain. It does the juggling.
 
-I built a tool called **firstmate** ([on GitHub](https://github.com/dayviec25/firstmate)), it's free and open source, and it's new. Getting started is just:
+I built a tool for this called **conductor** ([on GitHub](https://github.com/dayviec25/conductor)), it's free and open source, and it's new. Getting started is just:
 
 ```bash
-git clone https://github.com/dayviec25/firstmate
+git clone https://github.com/dayviec25/conductor
 # then run an agent inside it and start talking
 ```
 
-The first time you run it, it does a quick **talk-through setup** — no config files, just a conversation about your preferences. One of the things it asks is **how strict** you want to be with changes. Choosing **"full gate to PR"**, for example, means every change runs through **no-mistakes** to validate it before it ever reaches you as a PR.
+The first time you run it, it does a quick **talk-through setup** — no config files, just a conversation about your preferences. One of the things it asks is **how strict** you want to be with changes. Choosing **"full gate to PR"**, for example, means every change runs through **guardrail** to validate it before it ever reaches you as a PR.
 
 ## What it does behind the scenes
 
-Here's where it gets good. When you hand the first mate a request, it doesn't just run one agent. It:
+Here's where it gets good. When you hand conductor a request, it doesn't just run one agent. It:
 
 1. **Decomposes** the request into parallel tasks.
 2. **Spins up tmux tabs** for each — the same thing you'd do by hand.
-3. **Calls treehouse** to get an isolated worktree per task.
+3. **Calls wt-pool** to get an isolated worktree per task.
 4. **Runs an agent** in each worktree to do the actual work.
-5. **Runs no-mistakes** to get each change validated and the PRs ready for review.
+5. **Runs guardrail** to get each change validated and the PRs ready for review.
 
 All of that happens out of sight. You don't manage tabs, you don't name worktrees, you don't shepherd anything through review. You just keep feeding it work:
 
 > "Add an `update` command to the CLI for these three repos that bumps each one's npm version to the latest."
 
-The first mate recognizes that's not one task but **three parallel tasks**, fans them out, and gets to work. Or you give it something more open-ended:
+conductor recognizes that's not one task but **three parallel tasks**, fans them out, and gets to work. Or you give it something more open-ended:
 
 > "Look at the three most recent open issues in this repo and let's discuss which ones are actionable."
 
@@ -48,15 +48,15 @@ And it pulls the issues while the background agents keep churning. Watching it c
 
 ## Everything, composed
 
-What makes firstmate more than a convenience wrapper is that it's **all the other tools coming together as one workflow**:
+What makes conductor more than a convenience wrapper is that it's **all the other tools coming together as one workflow**:
 
 | Piece | Job |
 |---|---|
 | voice | how you talk to it |
-| lavish | clarifying and planning the work |
-| treehouse | isolated worktrees per task |
-| no-mistakes | validating changes into clean PRs |
-| gnhf | keeping agents running on long objectives |
+| planboard | clarifying and planning the work |
+| wt-pool | isolated worktrees per task |
+| guardrail | validating changes into clean PRs |
+| agent-loop | keeping agents running on long objectives |
 
 Individually, each is a sharp tool. Composed behind a single conversation, they become a crew you command by talking — not a pile of sessions you babysit.
 
