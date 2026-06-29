@@ -5,6 +5,11 @@ import "about-me/model"
 func GetAboutMeData() (model.AboutMe, error) {
 	Reviews := []model.Review{
 		{
+			Author:  "Erik Kamp",
+			Company: "Senior Staff Software Engineer, Lyft",
+			Quote:   "Working alongside David on the Lyft Android team has been a real privilege. He brings deep expertise in Kotlin and modern Android architecture, and consistently ships rider and driver features that are both polished and performant. David has been instrumental in driving our AI initiatives forward, from the in-app Co-Pilot experience to Driver AI, helping us turn cutting-edge ideas into production features. Beyond the code, he raises the bar for the whole team with his thoughtful reviews and collaborative approach.",
+		},
+		{
 			Author:  "Tim Jensen",
 			Company: "FantasyPros",
 			Quote:   "Working with David at FantasyPros was an exceptional experience. His expertise in mobile app development, especially in the Kotlin environment, significantly enhanced our product offerings. David's innovative approach to problem-solving and his commitment to quality have left a lasting impact on our team.",
@@ -13,11 +18,6 @@ func GetAboutMeData() (model.AboutMe, error) {
 			Author:  "Rishi Tapsee",
 			Company: "Yellow Pages",
 			Quote:   "David's tenure at Yellow Pages was marked by his remarkable skill in API development and data integration. His ability to architect robust backend solutions played a crucial role in our project's success. David's blend of technical proficiency and collaborative spirit makes him an invaluable asset.",
-		},
-		{
-			Author:  "Erik Kamp",
-			Company: "Senior Staff Software Engineer, Lyft",
-			Quote:   "Working alongside David on the Lyft Android team has been a real privilege. He brings deep expertise in Kotlin and modern Android architecture, and consistently ships rider and driver features that are both polished and performant. David has been instrumental in driving our AI initiatives forward, from the in-app Co-Pilot experience to Driver AI, helping us turn cutting-edge ideas into production features. Beyond the code, he raises the bar for the whole team with his thoughtful reviews and collaborative approach.",
 		},
 		{
 			Author:  "Sucheta Goregta",
@@ -58,12 +58,6 @@ func GetAboutMeData() (model.AboutMe, error) {
 			Company:     "Yellow Pages",
 			Role:        "Backend Engineer",
 			Description: "As a Backend Engineer at Yellow Pages, I played a key role in developing and maintaining the API for the Yellow Pages mobile app. I engineered a secure, RESTful API using .NET, specifically designed to handle spatial data for real estate listings. My responsibilities also included deploying an ETL solution to seamlessly integrate over 200,000 resale and rental listings daily, as well as automating services for email templating and daily statistical reporting.",
-		},
-		{
-			Date:        "2026",
-			Company:     "Resume AI",
-			Role:        "",
-			Description: "An AI that rewrites your resume for every role, runs mock interviews, and tells you — straight — what's working.",
 		},
 	}
 	Projects := []model.Project{
@@ -148,7 +142,7 @@ func GetAboutMeData() (model.AboutMe, error) {
 
 	return model.AboutMe{
 		Title:          "Full Stack Mobile Engineer",
-		Description:    "A seasoned Full Stack Mobile Engineer with over 10 years of experience, specializing in developing, modernizing, and maintaining cutting-edge mobile applications and web platforms. Known for my ability to innovate and lead in fast-paced environments, I bring a proven track record of enhancing user experience, streamlining development processes, and forging strategic partnerships across various industries.",
+		Description:    "A seasoned Full Stack Mobile Engineer with 8+ years of experience, specializing in developing, modernizing, and maintaining cutting-edge mobile applications and web platforms. Known for my ability to innovate and lead in fast-paced environments, I bring a proven track record of enhancing user experience, streamlining development processes, and forging strategic partnerships across various industries.",
 		WorkExperience: WorkExperience,
 		Projects:       Projects,
 		Reviews:        Reviews,
