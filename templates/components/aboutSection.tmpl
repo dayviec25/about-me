@@ -1,7 +1,14 @@
 {{ define "about" }}
-<section id="about" class="border-2 p-8 rounded-lg border-stone-700 bg-stone-950">
-  <div class="text-xl">About</div>
-  <div class="text-3xl my-4">{{ .Title }}</div>
-  <div class="text-md">{{ .Description }}</div>
+<section id="about" class="scroll-mt-24">
+  <p class="font-mono text-xs uppercase tracking-[0.18em] text-accent">{{ .Title }}</p>
+  <h1 class="mt-5 font-display text-4xl md:text-5xl font-semibold leading-[1.05] tracking-tight">
+    I build mobile apps<br class="hidden sm:block"> people use every day.
+  </h1>
+  <p class="mt-6 max-w-xl text-base md:text-lg leading-relaxed text-muted">{{ .Description }}</p>
+  <div class="mt-8 flex flex-wrap gap-2.5 font-mono text-xs">
+    <span class="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5">8+ yrs shipping</span>
+    <span class="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5">Android &middot; Kotlin</span>
+    <span class="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5">100M+ installs</span>
+  </div>
 </section>
 {{ end }}

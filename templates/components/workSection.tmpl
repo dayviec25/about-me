@@ -1,17 +1,17 @@
 {{ define "work" }}
-<div id="experience" class="border-2 p-8 rounded-lg border-stone-700 bg-stone-950">
-  <section>
-    <div class="text-2xl mb-4 font-bold text-white">Experience</div>
+<section id="experience" class="scroll-mt-24">
+  <h2 class="border-b border-line pb-3 font-display text-2xl font-semibold tracking-tight">Experience</h2>
+  <div class="divide-y divide-line">
     {{ range .WorkExperience }}
-    <div class="grid grid-cols-2 gap-4 mb-6">
-      <div class="text-sm text-gray-300">{{ .Date }}</div>
+    <div class="grid grid-cols-1 gap-2 py-6 sm:grid-cols-[8rem_1fr] sm:gap-6">
+      <div class="pt-1 font-mono text-[11px] uppercase tracking-wider text-muted">{{ .Date }}</div>
       <div>
-        <div class="text-lg text-white font-bold">{{ .Company }}</div>
-        <div class="text-md text-gray-300">{{ .Role }}</div>
-        <div class="text-xs text-gray-400">{{ .Description }}</div>
+        <div class="font-display text-lg font-semibold">{{ .Company }}</div>
+        <div class="text-sm font-medium text-accent">{{ .Role }}</div>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{{ .Description }}</p>
       </div>
     </div>
     {{ end }}
-  </section>
-</div>
+  </div>
+</section>
 {{ end }}

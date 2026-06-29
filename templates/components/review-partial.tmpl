@@ -1,9 +1,17 @@
-<blockquote class="text-xl italic mb-4">
-    "{{ .Review.Quote }}"
-</blockquote>
-<cite class="block text-lg font-semibold">{{ .Review.Author }} - {{ .Review.Company }}</cite>
-
-<div class="flex justify-end space-x-2 mt-2">
-    <button hx-get="/review/{{ .PrevID }}/prev" hx-target="#review-container" hx-swap="innerHTML" class="p-3 bg-gray-800 rounded border border-gray-600 hover:bg-gray-600 {{ if .IsFirstReview}}invisible{{end}}">&lt;</button>
-    <button hx-get="/review/{{ .NextID }}/next" hx-target="#review-container" hx-swap="innerHTML" class="p-3 bg-gray-800 border border-gray-600 rounded hover:bg-gray-600 {{ if .IsLastReview }}invisible{{end}}">&gt;</button>
-</div>
+<figure>
+  <blockquote class="text-lg md:text-xl leading-relaxed text-ink">
+    <span class="font-display text-accent">&ldquo;</span>{{ .Review.Quote }}<span class="font-display text-accent">&rdquo;</span>
+  </blockquote>
+  <figcaption class="mt-6 flex items-end justify-between gap-4">
+    <div>
+      <div class="font-semibold">{{ .Review.Author }}</div>
+      <div class="mt-0.5 font-mono text-[11px] uppercase tracking-wider text-muted">{{ .Review.Company }}</div>
+    </div>
+    <div class="flex shrink-0 gap-2">
+      <button hx-get="/review/{{ .PrevID }}/prev" hx-target="#review-container" hx-swap="innerHTML" aria-label="Previous review"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition hover:border-ink hover:text-ink {{ if .IsFirstReview}}invisible{{end}}">&larr;</button>
+      <button hx-get="/review/{{ .NextID }}/next" hx-target="#review-container" hx-swap="innerHTML" aria-label="Next review"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition hover:border-ink hover:text-ink {{ if .IsLastReview }}invisible{{end}}">&rarr;</button>
+    </div>
+  </figcaption>
+</figure>

@@ -1,45 +1,26 @@
 {{ define "production" }}
-<div id="production" class="border-2 p-8 rounded-lg border-stone-700 bg-stone-950">
-  <section class="carousel-container">
-    <div class="text-2xl mb-4 font-bold text-white">Production</div>
-    <div class="carousel">
-      {{ range .Projects }}
-      <div class="carousel-item w-auto">
-      <a href="{{ .Link.Href }}">
-        <div class="bg-white rounded-lg flex">
-          <div class="flex flex-row justify-between p-4 items-center">
-            <img class="w-32 h-32 rounded-md mr-4" src="{{ .Logo }}" alt="{{ .LogoAlt }}">
-            <div class="flex flex-col">
-            <div class="flex flex-col justify-center">
-              <div class="text-lg text-gray-900 font-semibold"> {{ .Title }} </div>
-              <div class="text-md text-green-900 font-semibold"> {{ .CompanyName }} </div>
-            </div>
-            {{ if or .ReviewRating .Downloads }}
-            <div class="flex items-center">
-              {{ if .ReviewRating }}
-              <div class="flex flex-col items-center">
-                <div class="text-2xl font-bold text-black" aria-label="Rated {{ .ReviewRating }} out of five stars">{{ .ReviewRating }}<span class="text-yellow-400 ml-1">★</span></div>
-                <div class="text-sm text-gray-600">{{ .ReviewCount }} Reviews</div>
-              </div>
-              {{ if .Downloads }}<div class="h-8 w-px bg-gray-600 mx-4"></div>{{ end }}
-              {{ end }}
-              {{ if .Downloads }}
-              <div class="flex flex-col items-center">
-                <div class="text-2xl font-bold text-black">{{ .Downloads }}</div>
-                <div class="text-sm text-gray-600">Downloads</div>
-              </div>
-              {{ end }}
-              </div>
-            {{ end }}
-            </div>
-          </div>
+<section id="production" class="scroll-mt-24">
+  <div class="flex items-baseline justify-between border-b border-line pb-3">
+    <h2 class="font-display text-2xl font-semibold tracking-tight">Apps in production</h2>
+    <span class="font-mono text-[11px] uppercase tracking-wider text-muted">Google Play</span>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {{ range .Projects }}
+    <a href="{{ .Link.Href }}" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-xl border border-line bg-surface p-4 transition hover:border-accent/40 hover:shadow-sm">
+      <img class="h-14 w-14 shrink-0 rounded-xl object-cover" src="{{ .Logo }}" alt="{{ .LogoAlt }}">
+      <div class="min-w-0">
+        <div class="truncate font-display font-semibold transition-colors group-hover:text-accent">{{ .Title }}</div>
+        <div class="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-muted">{{ .CompanyName }}</div>
+        <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px]">
+          {{ if .ReviewRating }}<span class="inline-flex items-center rounded-md bg-accent-soft px-2 py-0.5 text-accent">&#9733; {{ .ReviewRating }}{{ if .ReviewCount }} &middot; {{ .ReviewCount }}{{ end }}</span>{{ end }}
+          {{ if .Downloads }}<span class="inline-flex items-center rounded-md border border-line px-2 py-0.5 text-ink/70">{{ .Downloads }} installs</span>{{ end }}
         </div>
-        </a>
       </div>
-      {{ else }}
-      <div>No Projects Available</div>
-      {{ end }}
-    </div>
-  </section>
-</div>
+    </a>
+    {{ else }}
+    <p class="text-muted">No projects available.</p>
+    {{ end }}
+  </div>
+</section>
 {{ end }}

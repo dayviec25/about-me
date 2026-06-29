@@ -4,33 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog · David Chung</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Writing · David Chung</title>
+  {{ template "head-assets" }}
 </head>
-<body class="bg-stone-900 text-white font-sans">
+<body class="bg-canvas text-ink font-body antialiased">
 
-  <div class="flex justify-center">
+  <div class="mx-auto w-full max-w-5xl px-5 md:px-8">
+    <div class="md:flex md:gap-14">
 
-    <div class="hidden md:block md:w-64 border-gray-800 overflow-y-auto mt-10">
-      {{ template "navigation" }}
+      <aside class="md:w-56 md:shrink-0 md:self-start md:sticky md:top-0">
+        {{ template "navigation" }}
+      </aside>
+
+      <main class="min-w-0 flex-1 py-12 md:py-24">
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-accent">Writing</p>
+        <h1 class="mt-4 font-display text-4xl font-semibold tracking-tight">Notes & essays</h1>
+
+        {{ if not . }}
+          <p class="mt-8 text-muted">No posts yet — check back soon.</p>
+        {{ end }}
+
+        <div class="mt-10 space-y-4">
+          {{ range . }}
+          <a href="/blog/{{ .Slug }}" class="block rounded-xl border border-line bg-surface p-6 transition hover:border-accent/40 hover:shadow-sm">
+            <div class="font-mono text-[11px] uppercase tracking-wider text-muted">{{ .Date }}{{ if .Author }} &middot; {{ .Author }}{{ end }}</div>
+            <h2 class="mt-2 font-display text-xl font-semibold tracking-tight">{{ .Title }}</h2>
+            {{ if .Description }}<p class="mt-2 leading-relaxed text-muted">{{ .Description }}</p>{{ end }}
+          </a>
+          {{ end }}
+        </div>
+      </main>
+
     </div>
-
-    <div class="w-full md:max-w-2xl mx-8 my-10 flex-1 overflow-y-auto space-y-6">
-      <h1 class="text-3xl font-bold">Blog</h1>
-
-      {{ if not . }}
-        <p class="text-gray-400">No posts yet — check back soon.</p>
-      {{ end }}
-
-      {{ range . }}
-      <a href="/blog/{{ .Slug }}" class="block bg-stone-950 border border-stone-700 rounded-lg p-6 hover:border-stone-500 transition ease-in duration-200">
-        <h2 class="text-xl font-semibold">{{ .Title }}</h2>
-        <p class="text-sm text-gray-400 mt-1">{{ .Date }}{{ if .Author }} · {{ .Author }}{{ end }}</p>
-        {{ if .Description }}<p class="text-gray-300 mt-3">{{ .Description }}</p>{{ end }}
-      </a>
-      {{ end }}
-    </div>
-
   </div>
+
 </body>
 </html>
